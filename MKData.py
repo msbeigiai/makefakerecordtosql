@@ -1,8 +1,9 @@
 import pandas as pd
 from CRRecord import ChooseRandomRecord
+from MCommand import MakeCommand
 
 
-class MakeFakeData(ChooseRandomRecord):
+class MakeFakeData(ChooseRandomRecord, MakeCommand):
     def __init__(self, database, table_name, username, password, server='tcp:localhost,1433'):
         super().__init__(database, table_name, username, password, server)
         self.data = self.list_result
@@ -28,11 +29,10 @@ class MakeFakeData(ChooseRandomRecord):
 
     def ingest_random_row(self):
         data = self.roll_down_data()
-        print(type(data))
-        print(data)
-        command = 'insert into ' + self.table_name + " " + "values" + [str(value) for value in data]
+
+        command = self.command
         self.execute_command(command)
-        # self.commit_changes()
+        self.commit_changes()
 
     def roll_down_data(self):
         value = self.return_record_data()

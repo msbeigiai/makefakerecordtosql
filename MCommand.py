@@ -5,6 +5,7 @@ class MakeCommand:
         self.query_len = len(make_fake_data.columns)
         self.query_values = make_fake_data.roll_down_data()
         self.table_name = make_fake_data.table_name
+        self.command = self.make_complete_command()
 
     def export_string(self):
         command = ''
@@ -20,9 +21,11 @@ class MakeCommand:
 
     def make_complete_command(self):
         first_command = self.export_string()
-
+        command = ''
         for i in self.query_len:
-            temp = command
             command = 'insert into ' + self.table_name + " " + "(" + first_command + ")" + "values" + \
                       "(" + self.query_values[i] + ")"
+
+        return command
+
 

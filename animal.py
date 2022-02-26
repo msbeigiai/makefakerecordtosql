@@ -23,11 +23,4 @@ make_fake_data.return_record_data()
 # make_fake_data.ingest_random_row()
 
 make_command = MakeCommand(make_fake_data)
-# print(make_command.query_columns)
-# print(make_command.query_values)
-# print(make_command.query_len)
-
-print([value for value in make_command.query_values])
-
-
-# print(make_command.export_string())
+make_fake_data.ingest_random_row()
