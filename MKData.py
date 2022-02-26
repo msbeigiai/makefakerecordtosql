@@ -6,6 +6,7 @@ class MakeFakeData(ChooseRandomRecord):
     def __init__(self, database, table_name, username, password, server='tcp:localhost,1433'):
         super().__init__(database, table_name, username, password, server)
         self.data = self.list_result
+        self.table_name = table_name
         self.columns = []
 
     def return_record_data(self):

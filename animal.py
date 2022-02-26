@@ -5,6 +5,7 @@ class Animal:
 
 from CRRecord import ChooseRandomRecord
 from MKData import MakeFakeData
+from MCommand import MakeCommand
 
 server = 'tcp:localhost,1433'
 database = 'MicrosoftDynamicsAX'
@@ -19,4 +20,14 @@ table_name = 'dbo.RETAILTRANSACTIONTABLE'
 make_fake_data = MakeFakeData(database, table_name, username, password)
 make_fake_data.fetch_random_record()
 make_fake_data.return_record_data()
-make_fake_data.ingest_random_row()
+# make_fake_data.ingest_random_row()
+
+make_command = MakeCommand(make_fake_data)
+# print(make_command.query_columns)
+# print(make_command.query_values)
+# print(make_command.query_len)
+
+print([value for value in make_command.query_values])
+
+
+# print(make_command.export_string())
